@@ -1,16 +1,15 @@
-/* eslint-disable */
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
+import { useAppSelector } from '../../app/hooks';
 
 interface Props {
   onSelect: (id: number) => void;
+  selectedTodoId: number | null;
 }
 
-export const TodoList: React.FC = ({ onSelect, selectedTodoId }) => {
-  const status = useSelector((state: RootState) => state.filter.status);
-  const query = useSelector((state: RootState) => state.filter.query || '');
-  const todos = useSelector((state: RootState) => state.todos);
+export const TodoList: React.FC<Props> = ({ onSelect, selectedTodoId }) => {
+  const status = useAppSelector(state => state.filter.status);
+  const query = useAppSelector(state => state.filter.query || '');
+  const todos = useAppSelector(state => state.todos);
   const filteredTodos = todos.filter(todo => {
     const matchesStatus =
       status === 'all' ||

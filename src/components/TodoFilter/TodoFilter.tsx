@@ -1,11 +1,11 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setStatus, setQuery } from '../../features/filter';
 import { RootState } from '../../app/store';
 
 export const TodoFilter: React.FC = () => {
-  const dispatch = useDispatch();
-  const { status, query } = useSelector((state: RootState) => state.filter);
+  const dispatch = useAppDispatch();
+  const { status, query } = useAppSelector((state: RootState) => state.filter);
 
   return (
     <form className="field has-addons">
