@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppSelector } from '../../app/hooks';
 
 interface Props {
-  onSelect: (id: number) => void;
+  onSelect: (id: number | null) => void;
   selectedTodoId: number | null;
 }
 
@@ -20,9 +20,6 @@ export const TodoList: React.FC<Props> = ({ onSelect, selectedTodoId }) => {
     return matchesStatus && matchesQuery;
   });
 
-  if (filteredTodos.length === 0) {
-    return <p className="notification is-warning">No todos found</p>;
-  }
   return (
     <>
       {filteredTodos.length === 0 && (

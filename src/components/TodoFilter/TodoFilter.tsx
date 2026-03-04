@@ -1,11 +1,10 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setStatus, setQuery } from '../../features/filter';
-import { RootState } from '../../app/store';
 
 export const TodoFilter: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { status, query } = useAppSelector((state: RootState) => state.filter);
+  const { status, query } = useAppSelector(state => state.filter);
 
   return (
     <form className="field has-addons">

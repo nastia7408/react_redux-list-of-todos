@@ -1,9 +1,8 @@
 import { Loader } from '../Loader';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../../api';
 import { User } from '../../types/User';
+import { useAppSelector } from '../../app/hooks';
 
 interface Props {
   todoId: number;
@@ -14,9 +13,7 @@ export const TodoModal: React.FC<Props> = ({ todoId, onClose }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const todo = useSelector((state: RootState) =>
-    state.todos.find(t => t.id === todoId),
-  );
+  const todo = useAppSelector(state => state.todos.find(t => t.id === todoId));
 
   useEffect(() => {
     if (todo) {
